@@ -9,7 +9,7 @@ version = "${version}"
 displayName = "Flight API"
 authors = "DenisMasterHerobrine"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Flight API is a library for Minecraft (Fabric/NeoForge) that solves the issue of multiple mods conflicting over player flight control.
 '''
 #logoFile = ""
 

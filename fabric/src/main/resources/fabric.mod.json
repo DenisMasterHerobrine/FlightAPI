@@ -3,13 +3,13 @@
   "id": "flightapi",
   "version": "${version}",
   "name": "flightapi",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Flight API is a library for Minecraft that solves the issue of multiple mods conflicting over player flight control.",
   "authors": [
-    "Me!"
+    "DenisMasterHerobrine"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/DenisMasterHerobrine/FlightAPI",
+    "sources": "https://github.com/DenisMasterHerobrine/FlightAPI"
   },
   "license": "CC0-1.0",
   "icon": "assets/flightapi/icon.png",
@@ -25,7 +25,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.16.9",
-    "minecraft": "~1.21.1",
+    "minecraft": ">1.21.1",
     "java": ">=21",
     "fabric-api": "*"
   }
