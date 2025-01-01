@@ -3,7 +3,7 @@
 Flight API is a library for Minecraft (Fabric/NeoForge) that solves the issue of multiple mods conflicting over player flight control. With Flight API, you can avoid situations where players randomly drop to the ground or cannot fly at all because multiple mods keep toggling `player.getAbilities().flying` and `player.getAbilities().allowFlying` on and off.
 
 ## Main Concept
-   In Vanilla Minecraft (and many mods), flight logic code is looking the following is common:
+   In Vanilla Minecraft (and many mods), flight logic code may be looking like that:
 
 ```java
 player.getAbilities().flying = true;
@@ -23,9 +23,9 @@ Flight API prevents this by using these concepts:
  - **Unified API:** Mod developers should (and are strongly encouraged to) call:
 
     ```java
-    FlightAPI.requestFlight("MyMod", player.getUuid());
+    FlightAPI.requestFlight(String modId, ServerPlayerEntity player);
     // ...
-    FlightAPI.releaseFlight("MyMod", player.getUuid());
+    FlightAPI.releaseFlight(String modId, ServerPlayerEntity player);
     ```
     
     instead of directly accessing `player.getAbilities().flying`. This single control point ensures only one mod is in charge of flight at a time.
@@ -34,16 +34,26 @@ Flight API prevents this by using these concepts:
    In your build.gradle:
    
 ```groovy
-   dependencies {
-       // For Fabric
-       modImplementation "dev.denismasterherobrine:flightapi:<VERSION>"
+    repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/DenisMasterHerobrine/flightapi-${project.mod_loader}")
+        }
+    }
+
+    dependencies {
+        // For Fabric
+        modImplementation "dev.denismasterherobrine:flightapi-${project.mod_loader}:${project.flightapi_version}"
     
-       // Or for NeoForge
-       // modImplementation "dev.denismasterherobrine:flightapi:<VERSION>"
-   }
+        // or for NeoForge
+        // modImplementation "dev.denismasterherobrine:flightapi-${project.mod_loader}:${project.flightapi_version}"
+    }
 ```
 
-Also you can JiJ this API in your mod to make it easier to install your mod without much hassle with the Flight API.
+`${project.mod_loader}` is the mod loader you are using to apply Flight API in your `gradle.properties` file. (e.g., "fabric" or "neoforge").
+
+`${project.flightapi_version}` is the version of the Flight API you want to use. You can find the latest version in the [packages]
+
+Also you can jar-in-jar this API in your mod to make it easier to install your mod without much hassle with the Flight API.
 
 ## How to Use Flight API in Your Mod
    
@@ -117,3 +127,7 @@ which helps you to find out the issue and report it to the mod author.
  
 ### Priority Logic
 Out of the box, FlightManager handles requests FIFO (first in, first out). Whoever requests first becomes the owner.
+
+### License
+Flight API is licensed under the CC0-1.0 License. You can find the license text in the [LICENSE] file.
+Do whatever you want to.

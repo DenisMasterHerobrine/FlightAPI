@@ -71,8 +71,8 @@ subprojects {
                 name = "GithubPackages"
                 url = uri("https://maven.pkg.github.com/DenisMasterHerobrine/FlightAPI")
                 credentials {
-                    username = env.fetchOrNull("USERNAME") ?: System.getProperty("GITHUB_USERNAME")
-                    password = env.fetchOrNull("TOKEN")    ?: System.getProperty("GITHUB_TOKEN")
+                    username = System.getenv("GITHUB_USERNAME")
+                    password = System.getenv("GITHUB_TOKEN")
                 }
             }
         }
