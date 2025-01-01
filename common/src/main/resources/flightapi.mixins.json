@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "dev.denismasterherobrine.flightapi.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+  ],
+  "mixins": [
+    "MixinPlayerAbilities",
+    "MixinPlayerEntity"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
