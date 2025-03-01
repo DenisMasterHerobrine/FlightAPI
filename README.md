@@ -1,6 +1,10 @@
-## Flight API
+## Flight API (1.21.1+)
 
 Flight API is a library for Minecraft (Fabric/NeoForge) that solves the issue of multiple mods conflicting over player flight control. With Flight API, you can avoid situations where players randomly drop to the ground or cannot fly at all because multiple mods keep toggling `player.getAbilities().flying` and `player.getAbilities().allowFlying` on and off.
+
+While it does not depend on Minecraft versions, it is recommended to use the latest version of the API to avoid any issues. If there will be demand, I will backport the API to older versions of Minecraft. 
+
+1.0.0+ versions of the API are compatible with 1.21.1+ versions of Minecraft.
 
 ## Main Concept
    In Vanilla Minecraft (and many mods), flight logic code may be looking like that:

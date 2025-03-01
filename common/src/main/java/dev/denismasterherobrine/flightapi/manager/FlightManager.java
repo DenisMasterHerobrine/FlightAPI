@@ -31,7 +31,7 @@ public class FlightManager {
             return false;
         }
 
-        UUID playerUuid = player.getUuid();
+        UUID playerUuid = player.getGameProfile().getId();
 
         flightQueues.putIfAbsent(playerUuid, new LinkedList<>());
         Queue<String> queue = flightQueues.get(playerUuid);
@@ -62,7 +62,7 @@ public class FlightManager {
             return;
         }
 
-        UUID playerUuid = player.getUuid();
+        UUID playerUuid = player.getGameProfile().getId();
 
         String currentOwner = currentOwners.get(playerUuid);
 
@@ -103,7 +103,7 @@ public class FlightManager {
         player.getAbilities().flying = enabled;
         player.sendAbilitiesUpdate();
 
-        LOGGER.debug("[FlightManager] setFlightEnabled({}, {}) done", player.getUuid(), enabled);
+        LOGGER.debug("[FlightManager] setFlightEnabled({}, {}) done", player.getGameProfile().getId(), enabled);
     }
 
     public Map<UUID, Queue<String>> getFlightQueues() {

@@ -50,7 +50,7 @@ public abstract class MixinPlayerAbilities implements IFlightPlayerAbilities {
             return;
         }
 
-        String currentOwner = FlightManager.getInstance().getCurrentOwner(owner.getUuid()).orElse(null);
+        String currentOwner = FlightManager.getInstance().getCurrentOwner(owner.getGameProfile().getId()).orElse(null);
 
         if (currentOwner == null) {
             this.flying = newValue;
@@ -78,7 +78,7 @@ public abstract class MixinPlayerAbilities implements IFlightPlayerAbilities {
             return;
         }
 
-        String currentOwner = FlightManager.getInstance().getCurrentOwner(owner.getUuid()).orElse(null);
+        String currentOwner = FlightManager.getInstance().getCurrentOwner(owner.getGameProfile().getId()).orElse(null);
 
         if (currentOwner == null) {
             this.allowFlying = newValue;
