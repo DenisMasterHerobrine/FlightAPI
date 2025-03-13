@@ -39,6 +39,7 @@ public class FlightManager {
         String currentOwner = currentOwners.get(playerUuid);
         if (modId.equals(currentOwner)) {
             LOGGER.debug("[FlightManager] {} already owns flight for {}", modId, playerUuid);
+            setPlayerFlightEnabled(player, true);
             return true;
         }
 
