@@ -52,13 +52,11 @@ public class FlightAPI {
      * If the player has no queue, Optional.empty() will be returned.
      */
     public static Optional<List<String>> getFlightQueue(UUID playerUuid) {
-        Map<UUID, Queue<String>> queueMap = FLIGHT_MANAGER.getFlightQueues();
-        Queue<String> queue = queueMap.get(playerUuid);
+        return FLIGHT_MANAGER.getFlightQueueSnapshot(playerUuid);
+    }
 
-        if (queue == null) {
-            return Optional.empty();
-        }
-
-        return Optional.of(new ArrayList<>(queue));
+    public static void cancelFlightRequest(String modId, UUID playerUuid) {
+        LOGGER.debug("[FlightAPI] Cancelling flight request for mod {} and player {}", modId, playerUuid);
+        FLIGHT_MANAGER.cancelQueuedRequest(modId, playerUuid);
     }
 }

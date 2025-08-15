@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(PlayerAbilities.class)
 public abstract class MixinPlayerAbilities implements IFlightPlayerAbilities {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger("FlightApi|MixinPlayerAbilities");
+    private static final Logger LOGGER = LoggerFactory.getLogger("FlightAPI/MixinPlayerAbilities");
 
     @Shadow public boolean flying;
     @Shadow public boolean allowFlying;
