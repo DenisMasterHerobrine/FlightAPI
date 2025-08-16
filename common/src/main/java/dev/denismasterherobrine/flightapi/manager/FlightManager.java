@@ -117,7 +117,9 @@ public class FlightManager {
             player.getAbilities().flying = false;
         }
 
-        LOGGER.debug("[FlightManager] setFlightEnabled({}, {}) done", player.getGameProfile().getId(), enabled);
+        player.sendAbilitiesUpdate();
+
+        LOGGER.debug("[FlightManager] setPlayerFlightEnabled({}, {}) done", player.getGameProfile().getId(), enabled);
     }
 
     public synchronized Optional<List<String>> getFlightQueueSnapshot(UUID playerUuid) {

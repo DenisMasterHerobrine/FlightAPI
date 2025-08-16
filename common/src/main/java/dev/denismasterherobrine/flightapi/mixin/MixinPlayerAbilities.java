@@ -46,7 +46,7 @@ public abstract class MixinPlayerAbilities implements IFlightPlayerAbilities {
         PlayerEntity owner = this.getFlightOwner();
         if (owner == null) {
             this.flying = newValue;
-            LOGGER.info("[MixinPlayerAbilities] No owner found, setting flying={} as Vanilla", newValue);
+            LOGGER.debug("[MixinPlayerAbilities] No owner found, setting flying={} as Vanilla", newValue);
             return;
         }
 
@@ -54,9 +54,9 @@ public abstract class MixinPlayerAbilities implements IFlightPlayerAbilities {
 
         if (currentOwner == null) {
             this.flying = newValue;
-            LOGGER.info("[MixinPlayerAbilities] No FlightAPI owner, letting NBT set flying={}", newValue);
+            LOGGER.debug("[MixinPlayerAbilities] No FlightAPI owner, letting NBT set flying={}", newValue);
         } else {
-            LOGGER.info("[MixinPlayerAbilities] Flight is owned by {}, ignoring NBT flying={}", currentOwner, newValue);
+            LOGGER.debug("[MixinPlayerAbilities] Flight is owned by {}, ignoring NBT flying={}", currentOwner, newValue);
         }
     }
 
@@ -68,6 +68,7 @@ public abstract class MixinPlayerAbilities implements IFlightPlayerAbilities {
                     opcode = Opcodes.PUTFIELD
             )
     )
+
     private void flightapi$redirectAllowFlyingSet(PlayerAbilities instance, boolean newValue) {
         PlayerEntity owner = this.getFlightOwner();
 
