@@ -32,24 +32,9 @@ Flight API prevents this by using these concepts:
     instead of directly accessing `player.getAbilities().flying`. This single control point ensures only one mod is in charge of flight at a time.
 
 ## Dependency Setup (Fabric/NeoForge)
-   In your `build.gradle` you need to declare Flight API's maven (or CurseMaven, if you wish to) and use `modImplementation` dependency handler to load the library into your development environment.
+   In your `build.gradle` you need to declare Flight API's maven (or CurseMaven, if you wish to) and use `modImplementation` dependency handler to load the library into your development environment. 
    
-```gradle
-    repositories {
-        maven {
-            name = 'BehindTheScenery Team Maven'
-            url = 'https://maven.behindthescenery.online/repository/maven-public/'
-        }
-    }
-
-    dependencies {
-        modImplementation "dev.denismasterherobrine:flightapi-${project.mod_loader}:${project.flightapi_version}"
-    }
-```
-
-`${project.mod_loader}` is the mod loader you are using to apply Flight API in your development environment file. (e.g., "fabric" or "neoforge").
-
-`${project.flightapi_version}` is the version of the Flight API you want to use.
+Official maven is currently not available, so you can use CurseMaven to load the library into your development environment for now. Sorry for the inconvenience.
 
 Also you can jar-in-jar this API in your mod to make it easier to install your mod without much hassle with the Flight API. However, you can simply depend on it just like any other mod.
 
