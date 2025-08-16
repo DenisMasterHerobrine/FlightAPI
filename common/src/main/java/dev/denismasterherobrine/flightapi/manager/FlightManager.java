@@ -38,21 +38,21 @@ public class FlightManager {
 
         String currentOwner = currentOwners.get(playerUuid);
         if (modId.equals(currentOwner)) {
-            LOGGER.debug("[FlightManager] {} already owns flight for {}", modId, playerUuid);
+            LOGGER.info("[FlightManager] {} already owns flight for {}", modId, playerUuid);
             setPlayerFlightEnabled(player, true);
             return true;
         }
 
         if (currentOwner == null) {
             currentOwners.put(playerUuid, modId);
-            LOGGER.debug("[FlightManager] {} got flight control immediately for {}", modId, playerUuid);
+            LOGGER.info("[FlightManager] {} got flight control immediately for {}", modId, playerUuid);
             setPlayerFlightEnabled(player, true);
             return true;
         }
 
         if (!queue.contains(modId)) {
             queue.offer(modId);
-            LOGGER.debug("[FlightManager] {} queued for flight, current owner = {}", modId, currentOwner);
+            LOGGER.info("[FlightManager] {} queued for flight, current owner = {}", modId, currentOwner);
         }
         return false;
     }
@@ -111,9 +111,7 @@ public class FlightManager {
         // Players who can always fly keep that permission, otherwise it is set based on the mods request
         player.getAbilities().allowFlying = enabled || isSpectator || isCreative;
 
-        if (isSpectator) {
-            player.getAbilities().flying = true;
-        } else if (enabled) {
+        if (isSpectator || enabled) {
             player.getAbilities().flying = true;
         } else if (!isCreative) {
             player.getAbilities().flying = false;
